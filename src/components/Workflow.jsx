@@ -4,14 +4,14 @@ import { checklistItems } from "../constants";
 
 const Workflow = () => {
   return (
-    <div className="mt-20">
-      <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide">
+    <div className="mt-20" id="Work">
+      <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide" >
         Accelerate your{" "}
         <span className="bg-gradient-to-r from-red-500 to-indigo-800 text-transparent bg-clip-text">
           coding workflow.
         </span>
       </h2>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center" id="Work">
         <div className="p-2 w-full lg:w-1/2">
           <img src={codeImg} alt="Coding" />
         </div>

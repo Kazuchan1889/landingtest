@@ -27,21 +27,22 @@ const HeroSection = () => {
       </p>
       <div className="flex justify-center my-10">
         <a
-          href="#"
+          href="#Price"
           className="bg-gradient-to-r from-red-500 to-indigo-700 py-3 px-4 mx-3 rounded-md"
         >
           Start for free
         </a>
-        <a href="#" className="py-3 px-4 mx-3 rounded-md border">
+        <a href="#Doc" className="py-3 px-4 mx-3 rounded-md border">
           Documentation
         </a>
       </div>
-      <div className="flex mt-10 justify-center">
+      <div className="flex mt-10 justify-center" id="Doc">
         <video
           autoPlay
           loop
           muted
           className="rounded-lg w-1/2 border border-red-700 shadow-sm shadow-orange-400 mx-2 my-4"
+          
         >
           <source src={video1} type="video/mp4" />
           Your browser does not support the video tag.
