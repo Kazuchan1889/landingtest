@@ -1,15 +1,44 @@
 import { CheckCircle2 } from "lucide-react";
 import { pricingOptions } from "../constants";
+import { motion } from "framer-motion";
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: (index) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, delay: index * 0.2 },
+  }),
+};
 
 const Pricing = () => {
   return (
-    <div className="mt-20" id="Price">
-      <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center my-8 tracking-wide">
+    <motion.div 
+      className="mt-20" 
+      id="Price"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      <motion.h2 
+        className="text-3xl sm:text-5xl lg:text-6xl text-center my-8 tracking-wide"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         Pricing
-      </h2>
-      <div className="flex flex-wrap" >
+      </motion.h2>
+      <div className="flex flex-wrap">
         {pricingOptions.map((option, index) => (
-          <div key={index} className="w-full sm:w-1/2 lg:w-1/3 p-2">
+          <motion.div 
+            key={index} 
+            className="w-full sm:w-1/2 lg:w-1/3 p-2"
+            custom={index}
+            variants={slideInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <div className="p-10 border border-neutral-700 rounded-xl">
               <p className="text-4xl mb-8">
                 {option.title}
@@ -38,10 +67,10 @@ const Pricing = () => {
                 Subscribe
               </a>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
