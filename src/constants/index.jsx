@@ -42,58 +42,59 @@ export const testimonials = [
     user: "Ronee Brown",
     company: "Fusion Dynamics",
     image: user4,
-    text: "Working with the team at XYZ Company was a game-changer for our project. Their attention to detail and innovative solutions helped us achieve our goals faster than we thought possible. We are grateful for their expertise and professionalism!",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Donec nec sem et elit malesuada vehicula. Sed vitae sapien non mi pharetra interdum.",
   },
   {
     user: "Michael Wilson",
     company: "Visionary Creations",
     image: user5,
-    text: "I am amazed by the level of professionalism and dedication shown by the team. They were able to exceed our expectations and deliver outstanding results.",
+    text: "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer vel justo euismod, gravida erat vel, tincidunt ligula.",
   },
   {
     user: "Emily Davis",
     company: "Synergy Systems",
     image: user6,
-    text: "The team went above and beyond to ensure our project was a success. Their expertise and dedication are unmatched. I look forward to working with them again in the future.",
-  },
+    text: "Curabitur tristique metus vel ipsum sodales, a dictum metus pellentesque. Nam sit amet nibh vel nisl faucibus feugiat in eget metus.",
+  }
+
 ];
 
 export const features = [
   {
     icon: <BotMessageSquare />,
-    text: "Drag-and-Drop Interface",
+    text: "Blockchain Solutions",
     description:
-      "Easily design and arrange your VR environments with a user-friendly drag-and-drop interface.",
+      "Empower businesses with enterprise blockchain infrastructure, decentralized identity (DID), tokenization platforms, CBDC & stablecoin solutions, and smart contracts development.",
   },
   {
     icon: <Fingerprint />,
-    text: "Multi-Platform Compatibility",
+    text: "AI / ML / DL",
     description:
-      "Build VR applications that run seamlessly across multiple platforms, including mobile, desktop, and VR headsets.",
+      "Leverage AI-powered fraud detection, predictive analytics, NLP, virtual assistants, robotic process automation (RPA), and AI-driven cybersecurity solutions for intelligent automation.",
   },
   {
     icon: <ShieldHalf />,
-    text: "Built-in Templates",
+    text: "Security",
     description:
-      "Jumpstart your VR projects with a variety of built-in templates for different types of applications and environments.",
+      "Enhance security with DDoS protection, zero-trust architecture, ethical hacking, endpoint detection, firmware security, and database encryption.",
   },
   {
     icon: <BatteryCharging />,
-    text: "Real-Time Preview",
+    text: "Core Banking & ATM Management",
     description:
-      "Preview your VR application in real-time as you make changes, allowing for quick iterations and adjustments.",
+      "Optimize banking operations with digital core banking, ATM monitoring, multivendor support, security management, and electronic journal tracking.",
   },
   {
     icon: <PlugZap />,
-    text: "Collaboration Tools",
+    text: "Risk & Fraud Management",
     description:
-      "Work together with your team in real-time on VR projects, enabling seamless collaboration and idea sharing.",
+      "Implement fraud management systems, anti-money laundering (AML) solutions, operational risk management, and IT risk assessment.",
   },
   {
     icon: <GlobeLock />,
-    text: "Analytics Dashboard",
+    text: "Payments & Digital Banking",
     description:
-      "Gain valuable insights into user interactions and behavior within your VR applications with an integrated analytics dashboard.",
+      "Enable seamless transactions with acquiring, issuing, international payments, digital banking solutions, and mobile banking services.",
   },
 ];
 

@@ -16,12 +16,12 @@ const FeatureSection = () => {
     >
       <motion.div className="text-center" id="Feature" variants={fadeInUp}>
         <span className="bg-neutral-900 text-red-700 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase">
-          Feature
+          project
         </span>
         <h2 className="text-3xl sm:text-5xl lg:text-6xl mt-10 lg:mt-20 tracking-wide">
-          Easily build{" "}
+          Our Project{" "}
           <span className="bg-gradient-to-r from-red-500 to-indigo-800 text-transparent bg-clip-text">
-            your E.C.U
+             Idea
           </span>
         </h2>
       </motion.div>
