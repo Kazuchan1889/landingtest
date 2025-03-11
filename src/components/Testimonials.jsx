@@ -14,7 +14,7 @@ const Typewriter = ({ text }) => {
       } else {
         clearInterval(interval);
       }
-    }, 50);
+    }, 25);
     return () => clearInterval(interval);
   }, [text]);
   
@@ -42,27 +42,49 @@ const Testimonials = () => {
             transition={{ duration: 0.5, delay: index * 0.2 }}
             whileHover={{ scale: 1.05 }}
           >
-            <div className="bg-neutral-900 rounded-md p-6 text-md border border-neutral-800 font-thin shadow-lg">
+            <motion.div
+              className="bg-neutral-900 rounded-md p-6 text-md border border-neutral-800 font-thin shadow-lg"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.3 }}
+            >
               <p className="text-neutral-300">
                 <Typewriter text={testimonial.text} />
               </p>
-              <div className="flex mt-8 items-start">
+              <motion.div 
+                className="flex mt-8 items-start"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.4 }}
+              >
                 <motion.img
                   className="w-12 h-12 mr-6 rounded-full border border-neutral-300"
                   src={testimonial.image}
                   alt=""
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.3 }}
+                  transition={{ duration: 0.5, delay: index * 0.5 }}
                 />
                 <div>
-                  <h6 className="text-lg font-bold">{testimonial.user}</h6>
-                  <span className="text-sm font-normal italic text-neutral-600">
+                  <motion.h6 
+                    className="text-lg font-bold"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.6 }}
+                  >
+                    {testimonial.user}
+                  </motion.h6>
+                  <motion.span 
+                    className="text-sm font-normal italic text-neutral-600"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.7 }}
+                  >
                     {testimonial.company}
-                  </span>
+                  </motion.span>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         ))}
       </div>
