@@ -49,10 +49,16 @@ const HeroSection = ({ setScroll }) => {
         </a>
       </div>
       <a
-        href="#Feature"
+        onClick={(e) => {
+          e.preventDefault();
+          document
+            .getElementById("Feature")
+            .scrollIntoView({ behavior: "smooth" });
+          setScroll(true);
+        }}
         className="cursor-pointer hover:scale-110 flex flex-col items-center -mt-2"
       >
-        <button onClick={() => setScroll(true)}>Scroll Down</button>
+        <button>Scroll Down</button>
         <img className="w-5 h-5 animate-bounce" src={arrow} />
       </a>
     </div>
