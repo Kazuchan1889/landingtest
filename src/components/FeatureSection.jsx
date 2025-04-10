@@ -11,6 +11,7 @@ const fadeInUp = {
 };
 
 const FeatureSection = () => {
+<<<<<<< Updated upstream
   const [Show, setShow] = useState({});
   const [Center, setCenter] = useState(1);
 
@@ -18,6 +19,23 @@ const FeatureSection = () => {
     setShow((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
+=======
+  const [Show, setShow] = useState(Array(features.length).fill(false));
+  const [Center, setCenter] = useState(1);
+
+  const toggleShow = (index) => {
+    setShow((prev) => {
+      const newShow = [...prev];
+      newShow[index] = !newShow[index];
+      return newShow;
+    });
+  };
+
+  useEffect(() => {
+    setShow(Array(features.length).fill(false));
+  }, [Center]);
+
+>>>>>>> Stashed changes
   const settings = {
     dots: true,
     infinite: true,
@@ -64,6 +82,7 @@ const FeatureSection = () => {
           </span>
         </h2>
       </motion.div>
+<<<<<<< Updated upstream
 
       <div className="mt-10 lg:mt-20 px-6">
         <Slider {...settings} className="w-full max-w-[1000px] mx-auto">
@@ -86,6 +105,26 @@ const FeatureSection = () => {
                   {Show[index]
                     ? feature.description
                     : `${feature.description.slice(200)}`}
+=======
+      <div className="flex flex-wrap mt-10 lg:mt-20" id="Feature">
+        {features.map((feature, index) => (
+          <motion.div
+            key={index}
+            className="w-full sm:w-1/2 lg:w-1/3"
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <div className="flex">
+              <div className="flex mx-6 h-10 w-10 p-2 bg-neutral-900 text-red-700 justify-center items-center rounded-full">
+                {feature.icon}
+              </div>
+              <div>
+                <h5 className="mt-1 mb-6 text-xl">{feature.text}</h5>
+                <p className="text-md p-2 mb-20 text-neutral-500">
+                  {feature.description}
+>>>>>>> Stashed changes
                 </p>
                 <button
                   onClick={() => toggleShow(index)}

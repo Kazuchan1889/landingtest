@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const Typewriter = ({ text }) => {
   const [displayedText, setDisplayedText] = useState("");
-  
+
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -17,7 +17,7 @@ const Typewriter = ({ text }) => {
     }, 25);
     return () => clearInterval(interval);
   }, [text]);
-  
+
   return <span>{displayedText}</span>;
 };
 
@@ -51,7 +51,7 @@ const Testimonials = () => {
               <p className="text-neutral-300">
                 <Typewriter text={testimonial.text} />
               </p>
-              <motion.div 
+              <motion.div
                 className="flex mt-8 items-start"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -66,7 +66,7 @@ const Testimonials = () => {
                   transition={{ duration: 0.5, delay: index * 0.5 }}
                 />
                 <div>
-                  <motion.h6 
+                  <motion.h6
                     className="text-lg font-bold"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -74,7 +74,7 @@ const Testimonials = () => {
                   >
                     {testimonial.user}
                   </motion.h6>
-                  <motion.span 
+                  <motion.span
                     className="text-sm font-normal italic text-neutral-600"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}

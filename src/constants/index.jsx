@@ -11,8 +11,10 @@ import user3 from "../assets/profile-pictures/user3.jpg";
 import user4 from "../assets/profile-pictures/user4.jpg";
 import user5 from "../assets/profile-pictures/user5.jpg";
 import user6 from "../assets/profile-pictures/user6.jpg";
+import { desc } from "framer-motion/client";
 
 export const navItems = [
+  { label: "About Us", href: "#AboutUs" },
   { label: "Features", href: "#Feature" },
   { label: "Workflow", href: "#Work" },
   { label: "Pricing", href: "#Price" },
@@ -55,8 +57,7 @@ export const testimonials = [
     company: "Synergy Systems",
     image: user6,
     text: "Curabitur tristique metus vel ipsum sodales, a dictum metus pellentesque. Nam sit amet nibh vel nisl faucibus feugiat in eget metus.",
-  }
-
+  },
 ];
 
 export const features = [
@@ -123,8 +124,7 @@ export const checklistItems = [
 
 export const pricingOptions = [
   {
-    title: "Free",
-    price: "$0",
+    title: "HEXA PASS VIP",
     features: [
       "Private board sharing",
       "5 Gb Storage",
@@ -133,8 +133,7 @@ export const pricingOptions = [
     ],
   },
   {
-    title: "Pro",
-    price: "$10",
+    title: "HEXA PASS SILVER",
     features: [
       "Private board sharing",
       "10 Gb Storage",
@@ -143,8 +142,7 @@ export const pricingOptions = [
     ],
   },
   {
-    title: "Enterprise",
-    price: "$200",
+    title: "HEXA PASS BRONZE",
     features: [
       "Private board sharing",
       "Unlimited Storage",
