@@ -13,25 +13,25 @@ const slideInRight = {
 
 const Pricing = () => {
   return (
-    <motion.div
-      className="mt-20"
+    <motion.div 
+      className="mt-20" 
       id="Price"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
     >
-      <motion.h2
+      <motion.h2 
         className="text-3xl sm:text-5xl lg:text-6xl text-center my-8 tracking-wide"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Hexa Pass
+        Pricing
       </motion.h2>
       <div className="flex flex-wrap">
         {pricingOptions.map((option, index) => (
-          <motion.div
-            key={index}
+          <motion.div 
+            key={index} 
             className="w-full sm:w-1/2 lg:w-1/3 p-2"
             custom={index}
             variants={slideInRight}
@@ -49,8 +49,8 @@ const Pricing = () => {
                 )}
               </p>
               <p className="mb-8">
-                {/* <span className="text-5xl mt-6 mr-2">{option.price}</span>
-                <span className="text-neutral-400 tracking-tight">/Month</span> */}
+                <span className="text-5xl mt-6 mr-2">{option.price}</span>
+                <span className="text-neutral-400 tracking-tight">/Month</span>
               </p>
               <ul>
                 {option.features.map((feature, index) => (

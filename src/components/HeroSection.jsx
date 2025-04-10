@@ -3,11 +3,7 @@ import main from "../assets/background.mp4";
 import { motion, useInView } from "framer-motion";
 import arrow from "../assets/arrow.png";
 
-<<<<<<< Updated upstream
 const HeroSection = ({ setScroll }) => {
-=======
-const HeroSection = () => {
->>>>>>> Stashed changes
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const isInView1 = useInView(ref1, { once: true });
@@ -31,11 +27,7 @@ const HeroSection = () => {
           Cool Things
         </span>
       </h1>
-<<<<<<< Updated upstream
       <p className="mt-10 text-lg text-center text-white max-w-4xl">
-=======
-      <p className="mt-10 text-lg text-center text-neutral-500 max-w-4xl">
->>>>>>> Stashed changes
         Shaping the future of technology and Web3 innovation, we are on a
         mission to break boundaries and create limitless possibilities. With a
         vision of global expansion, we harness the power of blockchain to build
@@ -60,11 +52,7 @@ const HeroSection = () => {
         onClick={(e) => {
           e.preventDefault();
           document
-<<<<<<< Updated upstream
             .getElementById("Feature")
-=======
-            .getElementById("AboutUs")
->>>>>>> Stashed changes
             .scrollIntoView({ behavior: "smooth" });
           setScroll(true);
         }}
@@ -73,38 +61,6 @@ const HeroSection = () => {
         <button>Scroll Down</button>
         <img className="w-5 h-5 animate-bounce" src={arrow} />
       </a>
-<<<<<<< Updated upstream
-=======
-      <div className="flex mt-10 justify-center" id="Doc">
-        <motion.video
-          ref={ref1}
-          initial={{ opacity: 0, x: -100 }}
-          animate={isInView1 ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1, ease: "easeOut" }}
-          autoPlay
-          loop
-          muted
-          className="rounded-lg w-1/2 border border-red-700 shadow-sm shadow-orange-400 mx-2 my-4"
-        >
-          <source src={video1} type="video/mp4" />
-          Your browser does not support the video tag.
-        </motion.video>
-
-        <motion.video
-          ref={ref2}
-          initial={{ opacity: 0, x: 100 }}
-          animate={isInView2 ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          autoPlay
-          loop
-          muted
-          className="rounded-lg w-1/2 border border-red-700 shadow-sm shadow-orange-400 mx-2 my-4"
-        >
-          <source src={video2} type="video/mp4" />
-          Your browser does not support the video tag.
-        </motion.video>
-      </div>
->>>>>>> Stashed changes
     </div>
   );
 };
