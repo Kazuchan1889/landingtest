@@ -3,6 +3,7 @@ import video2 from "../assets/video2.mp4";
 import { useRef } from "react";
 import video3 from "../assets/video3.mp4";
 import { motion, useInView } from "framer-motion";
+import logo from "../assets/Hero.png";
 
 const HeroSection = () => {
 
@@ -17,38 +18,33 @@ const HeroSection = () => {
         autoPlay
         loop
         muted
-        className="absolute inset-0 w-full h-full object-cover blur-md -z-10"
+        className="absolute inset-0 w-full h-full object-cover blur-sm -z-10"
       >
         <source src={video3} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-
-      <h1 className="text-4xl sm:text-6xl lg:text-7xl text-center tracking-wide">
-        We Never Stop Making
+       <img className="h-44 w-74 mr-2 -mb-24" src={logo} alt="Logo" />
+      <h1 className="text-4xl sm:text-6xl lg:text-7xl mt-24 text-center tracking-wide">
+        Cooming
         <span className="bg-gradient-to-r from-red-700 to-indigo-400 text-transparent bg-clip-text px-4 py-1 border-2 border-transparent">
-          Cool Things
+          Soon
         </span>
       </h1>
       <p className="mt-10 text-lg text-center text-neutral-500 max-w-4xl">
-        Shaping the future of technology and Web3 innovation,
-        we are on a mission to break boundaries and create limitless possibilities.
-        With a vision of global expansion, we harness the power of blockchain to build cutting-edge solutions,
-        secure funding, and unlock new revenue models. Our commitment to innovation goes beyond technology—we empower communities,
-        drive engagement through NFTs and the $HEXA token, and redefine the way the world interacts with Web3.
-        The future is here, and we’re building it together.
+        We Gone Make Somthing Cool :3
       </p>
-      <div className="flex justify-center my-10">
-        <a
-          href="#Price"
-          className="bg-gradient-to-r from-red-500 to-indigo-700 py-3 px-4 mx-3 rounded-md"
-        >
-          Start for free
-        </a>
-        <a href="#Doc" className="py-3 px-4 mx-3 rounded-md border">
-          Documentation
-        </a>
-      </div>
-      <div className="flex mt-10 justify-center" id="Doc">
+        {/* <div className="flex justify-center my-10">
+          <a
+            href="#Price"
+            className="bg-gradient-to-r from-red-500 to-indigo-700 py-3 px-4 mx-3 rounded-md"
+          >
+            Start for free
+          </a>
+          <a href="#Doc" className="py-3 px-4 mx-3 rounded-md border">
+            Documentation
+          </a>
+        </div> */}
+      {/* <div className="flex mt-10 justify-center" id="Doc">
         <motion.video
           ref={ref1}
           initial={{ opacity: 0, x: -100 }}
@@ -76,7 +72,7 @@ const HeroSection = () => {
           <source src={video2} type="video/mp4" />
           Your browser does not support the video tag.
         </motion.video>
-      </div>
+      </div> */}
     </div>
   );
 };
