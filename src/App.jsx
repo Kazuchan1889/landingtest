@@ -27,26 +27,19 @@ const App = () => {
           <Navbar />
           <div className="max-w-7xl mx-auto pt-20 px-6 overflow-x-hidden">
             <HeroSection />
-            <FeatureSection />
+            {/* <FeatureSection />
             <Workflow />
             <Pricing />
             <Testimonials />
-            <Footer />
+            <Footer /> */}
           </div>
         </>
       )}
     <>
-      {/* <Navbar /> */}
-      <div className="max-w-7xl mx-auto pt-20 px-6">
-        <Cooming />
-        {/* <HeroSection /> */}
-        {/* <FeatureSection />
-        <Workflow />
-        <Pricing />
-        <Testimonials />
-        <Footer /> */}
-      </div>
+      
     </>
+    </>
+    
   );
 };
 

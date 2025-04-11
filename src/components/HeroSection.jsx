@@ -25,7 +25,7 @@ const HeroSection = () => {
       </video>
        <img className="h-44 w-74 mr-2 -mb-24" src={logo} alt="Logo" />
       <h1 className="text-4xl sm:text-6xl lg:text-7xl mt-24 text-center tracking-wide">
-        Cooming
+        Coming
         <span className="bg-gradient-to-r from-red-700 to-indigo-400 text-transparent bg-clip-text px-4 py-1 border-2 border-transparent">
           Soon
         </span>
