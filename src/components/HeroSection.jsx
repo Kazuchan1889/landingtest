@@ -6,7 +6,6 @@ import { motion, useInView } from "framer-motion";
 import logo from "../assets/Hero.png";
 
 const HeroSection = () => {
-
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const isInView1 = useInView(ref1, { once: true });
@@ -14,7 +13,7 @@ const HeroSection = () => {
 
   return (
     <div className="flex flex-col items-center mt-6 lg:mt-20">
-      <video
+      {/* <video
         autoPlay
         loop
         muted
@@ -22,8 +21,8 @@ const HeroSection = () => {
       >
         <source src={video3} type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
-       <img className="h-44 w-74 mr-2 -mb-24" src={logo} alt="Logo" />
+      </video> */}
+      <img className="h-44 w-74 mr-2 -mb-24" src={logo} alt="Logo" />
       <h1 className="text-4xl sm:text-6xl lg:text-7xl mt-24 text-center tracking-wide">
         Coming
         <span className="bg-gradient-to-r from-red-700 to-indigo-400 text-transparent bg-clip-text px-4 py-1 border-2 border-transparent">
@@ -33,7 +32,7 @@ const HeroSection = () => {
       <p className="mt-10 text-lg text-center text-neutral-500 max-w-4xl">
         We Gone Make Somthing Cool :3
       </p>
-        {/* <div className="flex justify-center my-10">
+      {/* <div className="flex justify-center my-10">
           <a
             href="#Price"
             className="bg-gradient-to-r from-red-500 to-indigo-700 py-3 px-4 mx-3 rounded-md"
