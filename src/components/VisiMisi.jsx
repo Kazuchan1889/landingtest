@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import vision from "../assets/vision_frame.png";
 import mission from "../assets/mission_logo.png";
 import web3 from "../assets/web3.0.png";
@@ -5,6 +7,47 @@ import community from "../assets/community.png";
 import globally from "../assets/globally.png";
 
 export default function VisiMisi() {
+  const items = [
+    {
+      id: "globally",
+      text: "Globally: Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      image: globally,
+    },
+    {
+      id: "web3",
+      text: "Web 3.0: Fugiat dolorum pariatur necessitatibus quas nisi dolor?",
+      image: web3,
+    },
+    {
+      id: "community",
+      text: "Community: Doloremque sit minus eligendi voluptates quibusdam esse.",
+      image: community,
+    },
+  ];
+
+  const positions = [
+    "translate-x-[40%] -translate-y-[75%]", // atas
+    "translate-x-[25%] translate-y-[5%]", // tengah
+    "translate-x-[40%] translate-y-[85%]", // bawah
+  ];
+
+  const [order, setOrder] = useState([0, 1, 2]); // urutan indeks item
+  const [fade, setFade] = useState(false); // kontrol fade animasi
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(true); // mulai fade-out
+
+      setTimeout(() => {
+        // setelah fade-out, ubah urutan dan fade-in
+        setOrder((prev) => [prev[1], prev[2], prev[0]]);
+        setFade(false); // aktifkan fade-in
+      }, 500); // waktu fade-out (0.5 detik)
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex items-center justify-center flex-col w-full min-h-screen">
       <div className="flex items-center w-full mt-44">
@@ -30,20 +73,34 @@ export default function VisiMisi() {
           </h3>
         </div>
       </div>
+
       {/* Mission Section */}
-      <div className="relative flex flex-row items-center justify-end w-full h-[130vh] mt-24">
-        {/* Right side: mission image */}
-        <div className="relative w-[100%] h-[100%]">
-          {/* Left side: 3 icons vertical */}
-          <div className="flex flex-col justify-center gap-6 z-10">
-            <img src={globally} alt="globally" className="w-36" />
-            <img src={web3} alt="web3" className="w-36" />
-            <img src={community} alt="community" className="w-36" />
+      <div className="w-full h-[50vh] mt-10 flex justify-center items-center">
+        <div className="w-[20%]"></div>
+        <div className="relative w-[80%] flex justify-center items-center">
+          <div className="relative w-[50%] flex items-center justify-center">
+            {order.map((itemIndex, posIndex) => {
+              const item = items[itemIndex];
+              return (
+                <div
+                  key={item.id}
+                  className={`
+                    absolute w-[90%] flex flex-row items-center gap-4 text-white text-sm leading-relaxed z-10
+                    transition-all duration-1000 ease-in-out
+                    transform ${positions[posIndex]}
+                    ${fade ? "opacity-0" : "opacity-100"}
+                  `}
+                >
+                  <p className="w-2/3">{item.text}</p>
+                  <img src={item.image} alt={item.id} className="w-1/3" />
+                </div>
+              );
+            })}
           </div>
           <img
             src={mission}
             alt="mission"
-            className="absolute right-0 top-0 w-full h-full object-cover translate-x-[35%]"
+            className="absolute translate-x-[40%] z-0"
           />
         </div>
       </div>
