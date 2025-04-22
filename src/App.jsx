@@ -9,7 +9,7 @@ import Testimonials from "./components/Testimonials";
 import Preloader from "./components/Preloader";
 import { useEffect, useState } from "react";
 import Cooming from "./components/Cooming";
-import bg from "./assets/bglanding.png";
+// import bg from "./assets/bglanding.png";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,7 @@ const App = () => {
                 <VisiMisi />
                 <FeatureSection />
                 <Workflow />
-                <Pricing />
+                {/* <Pricing /> */}
                 <Testimonials />
               </div>
             </div>
