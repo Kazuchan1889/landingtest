@@ -1,75 +1,79 @@
-import { CheckCircle2 } from "lucide-react";
-import codeImg from "../assets/code.jpg";
-import { checklistItems } from "../constants";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import video1 from '../assets/video1.mp4';
 
-const slideInLeft = {
-  hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
-};
+const CustomComponent = () => {
+  const videoRef = useRef(null);
 
-const slideInRight = {
-  hidden: { opacity: 0, x: 100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
-};
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          videoRef.current?.play();
+        } else {
+          videoRef.current?.pause();
+        }
+      },
+      { threshold: 0.6 } // Play jika 60% terlihat
+    );
 
-const Workflow = () => {
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.unobserve(videoRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <motion.div 
-      className="mt-20" 
-      id="Work"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+    <motion.div
+      className="flex flex-row gap-6 p-6"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
     >
-      <motion.h2 
-        className="text-3xl sm:text-5xl lg:text-6xl text-center mt-6 tracking-wide"
-        variants={slideInLeft}
-      >
-        Accelerate your{" "}
-        <span className="bg-gradient-to-r from-red-500 to-indigo-800 text-transparent bg-clip-text">
-          coding workflow.
-        </span>
-      </motion.h2>
-      <div className="flex flex-wrap justify-center" id="Work">
-        <motion.div 
-          className="p-2 w-full lg:w-1/2"
-          variants={slideInLeft}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+      {/* Bagian kiri: Persegi panjang */}
+      <div className="flex-1 flex items-center">
+        <motion.div
+          className="w-full h-[250px] relative rounded-lg overflow-hidden"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <img src={codeImg} alt="Coding" />
-        </motion.div>
-        <motion.div 
-          className="pt-12 w-full lg:w-1/2"
-          variants={slideInRight}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {checklistItems.map((item, index) => (
-            <motion.div 
-              key={index} 
-              className="flex mb-12"
-              variants={index % 2 === 0 ? slideInLeft : slideInRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <div className="text-green-400 mx-6 bg-neutral-900 h-10 w-10 p-2 justify-center items-center rounded-full">
-                <CheckCircle2 />
-              </div>
-              <div>
-                <h5 className="mt-1 mb-2 text-xl">{item.title}</h5>
-                <p className="text-md text-neutral-500">{item.description}</p>
-              </div>
-            </motion.div>
-          ))}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#F00001] to-[#4E0102] opacity-[60%] rounded-lg"></div>
+          <div className="relative z-10 p-6 text-white">
+            <h2 className="text-xl font-semibold mb-2">Title</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut orci nec arcu consequat luctus. Proin vulputate mollis urna non tincidunt.
+            </p>
+          </div>
         </motion.div>
       </div>
+
+      {/* Bagian kanan: Video autoplay tanpa kontrol */}
+      <motion.div
+        className="w-[512px] h-[512px] rounded-lg overflow-hidden bg-black"
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          src={video1}
+          muted
+          loop
+          playsInline
+        />
+      </motion.div>
     </motion.div>
   );
 };
 
-export default Workflow;
+export default CustomComponent;
