@@ -1,155 +1,105 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Slider from "react-slick";
+import { features } from "../constants";
+import { motion } from "framer-motion";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const items = [
-  { id: 1, content: "Project 1" },
-  { id: 2, content: "Project 2" },
-  { id: 3, content: "Project 3" },
-  { id: 4, content: "Project 4" },
-  { id: 5, content: "Project 5" },
-  { id: 6, content: "Project 6" },
-  { id: 7, content: "Project 7" },
-  { id: 8, content: "Project 8" },
-  { id: 9, content: "Project 9" },
-  { id: 10, content: "Project 10" },
-  { id: 11, content: "Project 11" },
-];
+const fadeInUp = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
-export default function ProjectCarousel() {
-  const [current, setCurrent] = useState(0);
-  const [viewAll, setViewAll] = useState(false);
-  const [direction, setDirection] = useState(0);
+const FeatureSection = () => {
+  const [Show, setShow] = useState({});
+  const [Center, setCenter] = useState(1);
 
-  const nextSlide = () => {
-    setDirection(1);
-    setCurrent((prev) => (prev + 1) % items.length);
+  const toggleShow = (index) => {
+    setShow((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
-  const prevSlide = () => {
-    setDirection(-1);
-    setCurrent((prev) => (prev - 1 + items.length) % items.length);
-  };
-
-  const getItem = (index) => items[(index + items.length) % items.length];
-
-  const variants = {
-    enter: (dir) => ({
-      x: dir > 0 ? 300 : -300,
-      opacity: 0,
-      position: "absolute",
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      position: "relative",
-    },
-    exit: (dir) => ({
-      x: dir < 0 ? 300 : -300,
-      opacity: 0,
-      position: "absolute",
-    }),
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "0",
+    initialSlide: 1,
+    adaptiveHeight: true,
+    focusOnSelect: true,
+    beforeChange: (oldIndex, newIndex) => setCenter(newIndex),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
-    // bg-gradient-to-b from-[#420000] to-[#aa0000]
-    <div className="w-full flex flex-col items-center justify-center  py-10 px-4 overflow-hidden min-h-screen mt-20">
-      <h2 className="text-white text-4xl font-bold mb-8">
-        <span className="text-red-600">Our</span> Things
-      </h2>
+    <motion.div
+      className="relative mt-20 border-b border-neutral-800 min-h-[800px]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      <motion.div className="text-center" id="Feature" variants={fadeInUp}>
+        <span className="bg-neutral-900 text-red-700 rounded-full h-6 text-sm font-medium px-2 py-1 uppercase">
+          project
+        </span>
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl mt-10 lg:mt-20 tracking-wide">
+          Our Project{" "}
+          <span className="bg-gradient-to-r from-red-500 to-indigo-800 text-transparent bg-clip-text">
+            Idea
+          </span>
+        </h2>
+      </motion.div>
 
-      {viewAll ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl w-full max-h-[720px] overflow-y-auto">
-          {items.slice(0, 9).map((item) => (
+      <div className="mt-10 lg:mt-20 px-6">
+        <Slider {...settings} className="w-full max-w-[1000px] mx-auto">
+          {features.map((feature, index) => (
             <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="h-[150px] bg-red-700 text-white flex items-center justify-center rounded-[15px] text-lg shadow-lg"
+              key={index}
+              className="px-4"
+              variants={fadeInUp}
+              animate={{
+                scale: Center === index ? 1.3 : 0.9,
+                transition: { duration: 0.5 },
+              }}
             >
-              {item.content}
+              <div className="flex flex-col overflow-hidden items-center text-center bg-neutral-900 ps-5 pe-5 pt-20 pb-20 min-h-[400px] rounded-lg shadow-lg">
+                <div className="h-14 w-14 flex justify-center items-center bg-red-700 text-white rounded-full mb-4">
+                  {feature.icon}
+                </div>
+                <h5 className="text-l mb-4">{feature.text}</h5>
+                <p className="text-sm text-neutral-500">
+                  {Show[index]
+                    ? feature.description
+                    : `${feature.description.slice(200)}`}
+                </p>
+                <button
+                  onClick={() => toggleShow(index)}
+                  className="mt-4 py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700"
+                >
+                  {Show[index] ? "Show Less" : "Show More"}
+                </button>
+              </div>
             </motion.div>
           ))}
-        </div>
-      ) : (
-        <div className="relative w-full max-w-6xl h-[420px] flex items-center justify-center overflow-hidden">
-          <div className="flex justify-center items-center gap-8 w-full relative">
-            {/* Previous */}
-            <motion.div
-              key={`prev-${current}`}
-              initial={{ opacity: 0.3, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="hidden md:block w-[260px] h-[320px] bg-red-600 rounded-[15px] flex items-center justify-center text-white text-2xl md:text-3xl shadow-lg cursor-pointer"
-              onClick={() => {
-                setDirection(-1); // Geser ke kiri
-                setCurrent((prev) => (prev - 1 + items.length) % items.length); // Mengupdate item
-              }}
-            >
-              <div className="flex justify-center items-center h-full w-full">
-                {getItem(current - 1).content}
-              </div>
-            </motion.div>
-
-            {/* Center (Current Item) */}
-            <motion.div
-              key={current}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ type: "tween", duration: 0.4 }}
-              className="w-[400px] md:w-[600px] h-[320px] md:h-[380px] relative overflow-hidden rounded-[15px] bg-red-700 shadow-2xl flex items-center justify-center text-white text-2xl md:text-4xl cursor-pointer"
-              onClick={() => {
-                setDirection(1); // Geser ke kanan
-                setCurrent((prev) => (prev + 1) % items.length); // Mengupdate item
-              }}
-            >
-              <div>{getItem(current).content}</div>
-            </motion.div>
-
-            {/* Next */}
-            <motion.div
-              key={`next-${current}`}
-              initial={{ opacity: 0.3, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="hidden md:block w-[260px] h-[320px] bg-red-600 rounded-[15px] flex items-center justify-center text-white text-2xl md:text-3xl shadow-lg cursor-pointer"
-              onClick={() => {
-                setDirection(1); // Geser ke kanan
-                setCurrent((prev) => (prev + 1) % items.length); // Mengupdate item
-              }}
-            >
-              <div className="flex justify-center items-center h-full w-full">
-                {getItem(current + 1).content}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Navigation */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-4 rounded-full text-white text-2xl"
-          >
-            ‹
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 p-4 rounded-full text-white text-2xl"
-          >
-            ›
-          </button>
-        </div>
-      )}
-
-      {/* View All Button */}
-      <button
-        onClick={() => setViewAll((prev) => !prev)}
-        className="mt-8 px-6 py-2 bg-white text-red-600 font-semibold rounded-full shadow hover:bg-red-100 transition"
-      >
-        {viewAll ? "Back to Carousel" : "View All"}
-      </button>
-    </div>
+        </Slider>
+      </div>
+    </motion.div>
   );
-}
+};
+
+export default FeatureSection;
