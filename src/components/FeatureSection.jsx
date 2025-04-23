@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const items = [
-  { id: 1, content: 'Project 1' },
-  { id: 2, content: 'Project 2' },
-  { id: 3, content: 'Project 3' },
-  { id: 4, content: 'Project 4' },
-  { id: 5, content: 'Project 5' },
-  { id: 6, content: 'Project 6' },
-  { id: 7, content: 'Project 7' },
-  { id: 8, content: 'Project 8' },
-  { id: 9, content: 'Project 9' },
-  { id: 10, content: 'Project 10' },
-  { id: 11, content: 'Project 11' },
+  { id: 1, content: "Project 1" },
+  { id: 2, content: "Project 2" },
+  { id: 3, content: "Project 3" },
+  { id: 4, content: "Project 4" },
+  { id: 5, content: "Project 5" },
+  { id: 6, content: "Project 6" },
+  { id: 7, content: "Project 7" },
+  { id: 8, content: "Project 8" },
+  { id: 9, content: "Project 9" },
+  { id: 10, content: "Project 10" },
+  { id: 11, content: "Project 11" },
 ];
 
 export default function ProjectCarousel() {
@@ -36,23 +36,23 @@ export default function ProjectCarousel() {
     enter: (dir) => ({
       x: dir > 0 ? 300 : -300,
       opacity: 0,
-      position: 'absolute',
+      position: "absolute",
     }),
     center: {
       x: 0,
       opacity: 1,
-      position: 'relative',
+      position: "relative",
     },
     exit: (dir) => ({
       x: dir < 0 ? 300 : -300,
       opacity: 0,
-      position: 'absolute',
+      position: "absolute",
     }),
   };
 
   return (
     // bg-gradient-to-b from-[#420000] to-[#aa0000]
-    <div className="w-full flex flex-col items-center justify-center  py-10 px-4 overflow-hidden">
+    <div className="w-full flex flex-col items-center justify-center  py-10 px-4 overflow-hidden min-h-screen mt-20">
       <h2 className="text-white text-4xl font-bold mb-8">
         <span className="text-red-600">Our</span> Things
       </h2>
@@ -86,7 +86,9 @@ export default function ProjectCarousel() {
                 setCurrent((prev) => (prev - 1 + items.length) % items.length); // Mengupdate item
               }}
             >
-              <div className="flex justify-center items-center h-full w-full">{getItem(current - 1).content}</div>
+              <div className="flex justify-center items-center h-full w-full">
+                {getItem(current - 1).content}
+              </div>
             </motion.div>
 
             {/* Center (Current Item) */}
@@ -97,7 +99,7 @@ export default function ProjectCarousel() {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ type: 'tween', duration: 0.4 }}
+              transition={{ type: "tween", duration: 0.4 }}
               className="w-[400px] md:w-[600px] h-[320px] md:h-[380px] relative overflow-hidden rounded-[15px] bg-red-700 shadow-2xl flex items-center justify-center text-white text-2xl md:text-4xl cursor-pointer"
               onClick={() => {
                 setDirection(1); // Geser ke kanan
@@ -119,7 +121,9 @@ export default function ProjectCarousel() {
                 setCurrent((prev) => (prev + 1) % items.length); // Mengupdate item
               }}
             >
-              <div className="flex justify-center items-center h-full w-full">{getItem(current + 1).content}</div>
+              <div className="flex justify-center items-center h-full w-full">
+                {getItem(current + 1).content}
+              </div>
             </motion.div>
           </div>
 
@@ -137,7 +141,6 @@ export default function ProjectCarousel() {
             ›
           </button>
         </div>
-
       )}
 
       {/* View All Button */}
@@ -145,7 +148,7 @@ export default function ProjectCarousel() {
         onClick={() => setViewAll((prev) => !prev)}
         className="mt-8 px-6 py-2 bg-white text-red-600 font-semibold rounded-full shadow hover:bg-red-100 transition"
       >
-        {viewAll ? 'Back to Carousel' : 'View All'}
+        {viewAll ? "Back to Carousel" : "View All"}
       </button>
     </div>
   );

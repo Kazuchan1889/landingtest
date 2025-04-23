@@ -5,11 +5,11 @@ import FeatureSection from "./components/FeatureSection";
 import Workflow from "./components/Workflow";
 import Footer from "./components/Footer";
 import Pricing from "./components/Pricing";
-import Testimonials from "./components/Testimonials";
+import Teams from "./components/Teams";
 import Preloader from "./components/Preloader";
 import { useEffect, useState } from "react";
 import Cooming from "./components/Cooming";
-// import bg from "./assets/bglanding.png";
+import bg from "./assets/bglanding.png";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -33,14 +33,14 @@ const App = () => {
             {/* Full width background section */}
             <div
               style={{ backgroundImage: `url(${bg})` }}
-              className="bg-cover bg-top bg-center bg-no-repeat w-full"
+              className="bg-cover bg-top bg-no-repeat w-full"
             >
               <div className="max-w-7xl mx-auto px-6">
                 <VisiMisi />
                 <FeatureSection />
                 <Workflow />
                 {/* <Pricing /> */}
-                <Testimonials />
+                <Teams />
               </div>
             </div>
 

@@ -10,17 +10,17 @@ export default function VisiMisi() {
   const items = [
     {
       id: "globally",
-      text: "Globally: Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda asperiores nesciunt adipisci sint dicta ratione excepturi voluptas tempore sed? Tempore?",
       image: globally,
     },
     {
       id: "web3",
-      text: "Web 3.0: Fugiat dolorum pariatur necessitatibus quas nisi dolor?",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda asperiores nesciunt adipisci sint dicta ratione excepturi voluptas tempore sed? Tempore?",
       image: web3,
     },
     {
       id: "community",
-      text: "Community: Doloremque sit minus eligendi voluptates quibusdam esse.",
+      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda asperiores nesciunt adipisci sint dicta ratione excepturi voluptas tempore sed? Tempore?",
       image: community,
     },
   ];
@@ -81,6 +81,7 @@ export default function VisiMisi() {
           <div className="relative w-[50%] flex items-center justify-center">
             {order.map((itemIndex, posIndex) => {
               const item = items[itemIndex];
+              const center = posIndex === 1;
               return (
                 <div
                   key={item.id}
@@ -91,7 +92,13 @@ export default function VisiMisi() {
                     ${fade ? "opacity-0" : "opacity-100"}
                   `}
                 >
-                  <p className="w-2/3">{item.text}</p>
+                  <p
+                    className={`w-2/3 transition-opacity duration-500 ${
+                      center ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {item.text}
+                  </p>
                   <img src={item.image} alt={item.id} className="w-1/3" />
                 </div>
               );
