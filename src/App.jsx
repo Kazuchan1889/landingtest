@@ -2,7 +2,9 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import VisiMisi from "./components/VisiMisi";
 import FeatureSection from "./components/FeatureSection";
+import Roadmap from "./components/Roadmap";
 import Workflow from "./components/Workflow";
+import Quotes from "./components/Quotes";
 import Footer from "./components/Footer";
 import Pricing from "./components/Pricing";
 import Teams from "./components/Teams";
@@ -38,7 +40,9 @@ const App = () => {
               <div className="max-w-7xl mx-auto px-6">
                 <VisiMisi />
                 <FeatureSection />
-                <Workflow />
+                <Roadmap />
+                <Quotes />
+                {/* <Workflow /> */}
                 {/* <Pricing /> */}
                 <Teams />
               </div>

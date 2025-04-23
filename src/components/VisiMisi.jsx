@@ -5,110 +5,223 @@ import mission from "../assets/mission_logo.png";
 import web3 from "../assets/web3.0.png";
 import community from "../assets/community.png";
 import globally from "../assets/globally.png";
+import emblem from "../assets/logo-emblem.png";
 
 export default function VisiMisi() {
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % items.length);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % items.length);
+    }, 3000); // ganti item tiap 3 detik
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    handleResize(); // initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const items = [
     {
       id: "globally",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda asperiores nesciunt adipisci sint dicta ratione excepturi voluptas tempore sed? Tempore?",
+      text: "Bring HBM's tech solutions to international markets.",
       image: globally,
     },
     {
       id: "web3",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda asperiores nesciunt adipisci sint dicta ratione excepturi voluptas tempore sed? Tempore?",
+      text: "Build blockchain-powered services, secure funding, and create new revenue models.",
       image: web3,
     },
     {
       id: "community",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda asperiores nesciunt adipisci sint dicta ratione excepturi voluptas tempore sed? Tempore?",
+      text: "Engage Web3 users via NFTs and $HEXA token.",
       image: community,
     },
   ];
 
   const positions = [
-    "translate-x-[40%] -translate-y-[75%]", // atas
-    "translate-x-[25%] translate-y-[5%]", // tengah
-    "translate-x-[40%] translate-y-[85%]", // bawah
+    "translate-x-[40%] -translate-y-[75%]",
+    "translate-x-[20%] translate-y-[5%]",
+    "translate-x-[40%] translate-y-[85%]",
   ];
 
-  const [order, setOrder] = useState([0, 1, 2]); // urutan indeks item
-  const [fade, setFade] = useState(false); // kontrol fade animasi
+  const [order, setOrder] = useState([0, 1, 2]);
+  const [fade, setFade] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(true); // mulai fade-out
-
+      setFade(true);
       setTimeout(() => {
-        // setelah fade-out, ubah urutan dan fade-in
         setOrder((prev) => [prev[1], prev[2], prev[0]]);
-        setFade(false); // aktifkan fade-in
-      }, 500); // waktu fade-out (0.5 detik)
+        setFade(false);
+      }, 500);
     }, 3000);
-
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="flex items-center justify-center flex-col w-full min-h-screen">
-      <div className="flex items-center w-full mt-44">
-        {/* Vision Section */}
-        <div className="relative w-1/2 h-[50vh] flex items-center justify-start">
+    <div className="flex flex-col items-center w-full min-h-screen p-4">
+      {/* Vision Section */}
+      <div className="flex flex-col-reverse lg:flex-row items-center w-full mt-10 gap-6 lg:gap-0">
+        <div className="relative w-[100%] lg:w-1/2 h-[50vh] flex items-center justify-center lg:justify-start">
           <img
             src={vision}
             alt="Vision"
-            className="absolute left-0 w-[100%] z-0 -translate-x-[15%]"
+            className="lg:absolute w-full lg:w-full z-0 lg:-translate-x-[50%] lg:mt-40"
           />
-          <div className="absolute top-1/4 left-1/2 transform -translate-x-[95%] z-10 text-white text-center w-full">
-            <h3 className="text-4xl font-bold mb-2">Vision</h3>
-            <p className="text-xl w-[40%] mx-auto">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+
+          {/* Teks di dalam gambar untuk < lg, normal position untuk lg+ */}
+          <div
+            className="
+      absolute 
+      top-1/2 left-1/2 
+      -translate-x-1/2 -translate-y-1/2 
+      z-10 text-white text-center 
+      px-7 w-[90%]
+      lg:static lg:text-left lg:px-0 lg:mt-36 lg:translate-x-0 lg:translate-y-0
+    "
+          >
+            <h3 className="text-xl xl:text-3xl font-bold mb-2 lg:-translate-x-[10%]">
+              Vision
+            </h3>
+            <p className="xl:text-lg lg:text-sm lg:w-[40%] w-full text-xs lg:mx-0 lg:-translate-x-[35%]">
+              To be a global leader in technology and web3 innovation, creating
+              groundbreaking solutions that redefine the future. No limits, just{" "}
+              <span className="font-bold">endless possibilities</span>.
             </p>
           </div>
         </div>
 
         {/* Title Section */}
-        <div className="w-1/2 flex justify-end pr-10">
-          <h3 className="text-white text-4xl font-semibold text-right">
-            VISION & MISSION
+        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-center pr-0 lg:pr-10 gap-3">
+          <h3 className="text-white text-3xl lg:text-5xl font-semibold">
+            VISION
+          </h3>
+          <img src={emblem} alt="emblem" className="w-[15%] lg:w-[6%]" />
+          <h3 className="text-white text-3xl lg:text-5xl font-semibold">
+            MISSION
           </h3>
         </div>
       </div>
 
       {/* Mission Section */}
-      <div className="w-full h-[50vh] mt-10 flex justify-center items-center">
-        <div className="w-[20%]"></div>
-        <div className="relative w-[80%] flex justify-center items-center">
-          <div className="relative w-[50%] flex items-center justify-center">
-            {order.map((itemIndex, posIndex) => {
-              const item = items[itemIndex];
-              const center = posIndex === 1;
-              return (
-                <div
-                  key={item.id}
-                  className={`
-                    absolute w-[90%] flex flex-row items-center gap-4 text-white text-sm leading-relaxed z-10
-                    transition-all duration-1000 ease-in-out
-                    transform ${positions[posIndex]}
-                    ${fade ? "opacity-0" : "opacity-100"}
-                  `}
-                >
-                  <p
-                    className={`w-2/3 transition-opacity duration-500 ${
-                      center ? "opacity-100" : "opacity-0"
-                    }`}
+      <div className="w-full h-[50vh] flex flex-col lg:flex-row items-center justify-center relative">
+        <div className="hidden lg:block w-[20%]"></div>
+
+        <div className="relative w-full lg:w-[80%] flex justify-center items-center">
+          <div className="relative w-[80%] lg:w-[50%] flex items-center justify-center">
+            {isLargeScreen ? (
+              // LG+: Animated rotation
+              order.map((itemIndex, posIndex) => {
+                const item = items[itemIndex];
+                const center = posIndex === 1;
+                return (
+                  <div
+                    key={item.id}
+                    className={`
+                absolute w-full flex flex-row items-center gap-3 text-white leading-relaxed z-10
+                transition-all duration-1000 ease-in-out transform
+                ${positions[posIndex]} ${fade ? "opacity-0" : "opacity-100"}
+              `}
                   >
-                    {item.text}
-                  </p>
-                  <img src={item.image} alt={item.id} className="w-1/3" />
+                    <p
+                      className={`text-center lg:text-left px-4 lg:w-2/3 lg:text-lg transition-opacity duration-500 ${
+                        center ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      {item.text}
+                    </p>
+                    <img
+                      src={item.image}
+                      alt={item.id}
+                      className="lg:w-1/3 w-1/2"
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <div className="w-full flex flex-col items-center justify-center relative">
+                {/* Mission Title (mobile only) */}
+                {!isLargeScreen && (
+                  <div className="text-white text-center text-xl font-semibold mb-4">
+                    Mission
+                  </div>
+                )}
+
+                {/* Carousel */}
+                <div className="flex justify-center items-center w-full">
+                  <button
+                    onClick={() =>
+                      setCurrentIndex(
+                        (prev) => (prev - 1 + items.length) % items.length
+                      )
+                    }
+                    className="text-white px-2 text-2xl"
+                    aria-label="Previous"
+                  >
+                    ‹
+                  </button>
+
+                  <div className="flex flex-col items-center text-white w-[80%] max-w-xs bg-black bg-opacity-50 rounded-lg p-4 shadow-lg transition-all duration-500">
+                    <img
+                      src={items[currentIndex].image}
+                      alt={items[currentIndex].id}
+                      className="w-1/2 mb-2"
+                    />
+                    <p className="text-center text-sm">
+                      {items[currentIndex].text}
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() =>
+                      setCurrentIndex((prev) => (prev + 1) % items.length)
+                    }
+                    className="text-white px-2 text-2xl"
+                    aria-label="Next"
+                  >
+                    ›
+                  </button>
                 </div>
-              );
-            })}
+
+                {/* Dot indicators */}
+                <div className="flex gap-2 mt-3">
+                  {items.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentIndex === i ? "bg-white" : "bg-gray-400"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-          <img
-            src={mission}
-            alt="mission"
-            className="absolute translate-x-[40%] z-0"
-          />
+
+          {/* Background mission image */}
+          {isLargeScreen && (
+            <img
+              src={mission}
+              alt="mission"
+              className="absolute translate-x-[40%] z-0"
+            />
+          )}
         </div>
       </div>
     </div>
