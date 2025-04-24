@@ -117,7 +117,7 @@ export default function VisiMisi() {
           <img
             src={vision}
             alt="Vision"
-            className="absolute w-[200%] lg:w-[150%] z-0 translate-x-[5%] translate-y-[5%] lg:-translate-x-[40%] lg:mt-40"
+            className="hidden lg:block absolute w-[200%] lg:w-[150%] z-0 translate-x-[5%] translate-y-[5%] lg:-translate-x-[40%] lg:mt-40"
           />
 
           {/* Teks di dalam gambar untuk < lg, normal position untuk lg+ */}

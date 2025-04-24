@@ -12,7 +12,7 @@ const HeroSection = () => {
   const isInView2 = useInView(ref2, { once: true });
 
   return (
-    <div className="flex flex-col items-center mt-6 lg:mt-20">
+    <div className="flex flex-col items-center mt-6 lg:mt-20 min-h-[70vh]">
       <video
         autoPlay
         loop
@@ -50,7 +50,7 @@ const HeroSection = () => {
           COOL THINGS
         </span>
       </h1>
-      <div className="flex justify-center mb-44 my-10">
+      <div className="flex justify-center my-10">
         <a
           href="#visi"
           className="bg-gradient-to-r from-red-500 to-indigo-700 py-3 px-4 mx-3 rounded-md"
