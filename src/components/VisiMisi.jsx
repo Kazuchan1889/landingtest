@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { motion } from "framer-motion";
 import vision from "../assets/vision_frame.png";
 import mission from "../assets/mission_logo.png";
 import web3 from "../assets/web3.0.png";
@@ -74,15 +74,50 @@ export default function VisiMisi() {
     return () => clearInterval(interval);
   }, []);
 
+  const containerVariant = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5,
+      },
+    },
+  };
+
+  const fadeRight = {
+    hidden: { opacity: 0, x: 100 },
+    show: { opacity: 1, x: 0 },
+  };
+
+  const fadeLeft = {
+    hidden: { opacity: 0, x: -100 },
+    show: { opacity: 1, x: 0 },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 80 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div id="visi" className="flex flex-col items-center w-full min-h-screen p-4">
+    <motion.div
+      id="visi"
+      className="flex flex-col items-center w-full min-h-screen p-4"
+      variants={containerVariant}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 1 }}
+    >
       {/* Vision Section */}
       <div className="flex flex-col-reverse lg:flex-row items-center w-full mt-10 gap-6 lg:gap-0">
-        <div className="relative w-[100%] lg:w-1/2 h-[50vh] flex items-center justify-center lg:justify-start">
+        <motion.div
+          className="relative w-[100%] lg:w-1/2 h-[50vh] flex items-center justify-center lg:justify-start"
+          variants={fadeRight}
+        >
           <img
             src={vision}
             alt="Vision"
-            className="lg:absolute w-[200%] lg:w-[150%] z-0 lg:-translate-x-[50%] lg:mt-40"
+            className="lg:absolute w-[200%] lg:w-[150%] z-0 lg:-translate-x-[40%] lg:mt-40"
           />
 
           {/* Teks di dalam gambar untuk < lg, normal position untuk lg+ */}
@@ -93,7 +128,7 @@ export default function VisiMisi() {
       -translate-x-1/2 -translate-y-1/2 
       z-10 text-white text-center 
       px-7 w-[90%]
-      lg:static lg:text-left lg:px-0 lg:mt-36 lg:translate-x-0 lg:translate-y-0
+      lg:static lg:text-left lg:px-0 lg:mt-32 lg:translate-x-0 lg:translate-y-0
     "
           >
             <h3 className="text-xl xl:text-3xl font-bold mb-2 lg:-translate-x-[10%]">
@@ -105,10 +140,13 @@ export default function VisiMisi() {
               <span className="font-bold">endless possibilities</span>.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Title Section */}
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-center pr-0 lg:pr-10 gap-3">
+        <motion.div
+          className="w-full lg:w-1/2 flex justify-center lg:justify-end items-center pr-0 lg:pr-10 gap-3"
+          variants={fadeLeft}
+        >
           <h3 className="text-white text-3xl lg:text-5xl font-semibold">
             VISION
           </h3>
@@ -116,11 +154,14 @@ export default function VisiMisi() {
           <h3 className="text-white text-3xl lg:text-5xl font-semibold">
             MISSION
           </h3>
-        </div>
+        </motion.div>
       </div>
 
       {/* Mission Section */}
-      <div className="w-full h-[50vh] flex flex-col lg:flex-row items-center justify-center relative">
+      <motion.div
+        className="w-full h-[50vh] flex flex-col lg:flex-row items-center justify-center relative"
+        variants={fadeUp}
+      >
         <div className="hidden lg:block w-[20%]"></div>
 
         <div className="relative w-full lg:w-[80%] flex justify-center items-center">
@@ -140,8 +181,9 @@ export default function VisiMisi() {
               `}
                   >
                     <p
-                      className={`text-center lg:text-left px-4 lg:w-2/3 lg:text-lg transition-opacity duration-500 ${center ? "opacity-100" : "opacity-0"
-                        }`}
+                      className={`text-center lg:text-left px-4 lg:w-2/3 lg:text-lg transition-opacity duration-500 ${
+                        center ? "opacity-100" : "opacity-0"
+                      }`}
                     >
                       {item.text}
                     </p>
@@ -203,8 +245,9 @@ export default function VisiMisi() {
                   {items.map((_, i) => (
                     <div
                       key={i}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === i ? "bg-white" : "bg-gray-400"
-                        }`}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentIndex === i ? "bg-white" : "bg-gray-400"
+                      }`}
                     />
                   ))}
                 </div>
@@ -221,7 +264,7 @@ export default function VisiMisi() {
             />
           )}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
