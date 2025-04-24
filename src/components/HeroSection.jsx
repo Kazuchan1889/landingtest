@@ -13,7 +13,7 @@ const HeroSection = () => {
   const isInView2 = useInView(ref2, { once: true });
 
   return (
-    <div className="flex flex-col items-center mt-6 lg:mt-20 overflow-hidden">
+    <div className="flex flex-col items-center mt-6 lg:mt-20 min-h-[70vh]">
       <video
         autoPlay
         loop
@@ -45,21 +45,11 @@ const HeroSection = () => {
         <span className="bg-gradient-to-r from-red-700 to-indigo-400 text-transparent bg-clip-text px-4 py-1 border-2 border-transparent">
           COOL THINGS
         </span>
-      </motion.h1>
-
-      {/* Animasi slide-in untuk button */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.6 }}
-        className="flex justify-center mb-44 my-10"
-      >
-        <Link
-          to="visi"
-          smooth={true}
-          duration={800}
-          offset={-50}
-          className="cursor-pointer bg-gradient-to-r from-red-500 to-indigo-700 py-3 px-4 mx-3 rounded-md"
+      </h1>
+      <div className="flex justify-center my-10">
+        <a
+          href="#visi"
+          className="bg-gradient-to-r from-red-500 to-indigo-700 py-3 px-4 mx-3 rounded-md"
         >
           see more
         </Link>
