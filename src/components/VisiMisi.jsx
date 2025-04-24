@@ -106,7 +106,7 @@ export default function VisiMisi() {
       variants={containerVariant}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
     >
       {/* Vision Section */}
       <div className="flex flex-col-reverse lg:flex-row items-center w-full mt-10 gap-6 lg:gap-0">
