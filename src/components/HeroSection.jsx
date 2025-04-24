@@ -45,14 +45,14 @@ const HeroSection = () => {
         <span className="bg-gradient-to-r from-red-700 to-indigo-400 text-transparent bg-clip-text px-4 py-1 border-2 border-transparent">
           COOL THINGS
         </span>
-      </h1>
-      <div className="flex justify-center my-10">
+      </motion.h1>
+      <motion.div className="flex justify-center my-10">
         <a
           href="#visi"
           className="bg-gradient-to-r from-red-500 to-indigo-700 py-3 px-4 mx-3 rounded-md"
         >
           see more
-        </Link>
+        </a>
       </motion.div>
     </div>
   );
