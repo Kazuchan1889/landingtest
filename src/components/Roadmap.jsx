@@ -50,7 +50,7 @@ export default function RoadmapStages() {
           Roadmap
         </span>
       </h2>
-      <div className="bg-black bg-opacity-50 p-7 rounded-lg max-w-6xl w-full">
+      <div id="roadmap" className="bg-black bg-opacity-50 p-7 rounded-lg max-w-6xl w-full">
         <h2 className="text-4xl text-center bg-gradient-to-r from-red-500 to-indigo-600 text-transparent bg-clip-text">
           2025
         </h2>

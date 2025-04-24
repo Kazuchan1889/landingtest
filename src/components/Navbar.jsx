@@ -1,6 +1,8 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import logo from "../assets/logo.png";
+import { Link } from "react-scroll";
+
 
 const Navbar = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -21,21 +23,40 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <ul className="hidden lg:flex ml-14 space-x-10">
             <li>
-              <a href="#vision" className="hover:text-red-400">
+              <Link
+                to="visi"
+                smooth={true}
+                duration={800}
+                offset={-70}
+                className="hover:text-red-400 cursor-pointer"
+              >
                 Vision and Mission
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#features" className="hover:text-red-400">
+              <Link
+                to="Feature"
+                smooth={true}
+                duration={800}
+                offset={-70}
+                className="hover:text-red-400 cursor-pointer"
+              >
                 Features
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#roadmap" className="hover:text-red-400">
+              <Link
+                to="roadmap"
+                smooth={true}
+                duration={800}
+                offset={-70}
+                className="hover:text-red-400 cursor-pointer"
+              >
                 Roadmap
-              </a>
+              </Link>
             </li>
           </ul>
+
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden md:flex flex-col justify-end">
@@ -50,21 +71,43 @@ const Navbar = () => {
           <div className="fixed right-0 top-0 z-20 bg-neutral-900 w-full h-screen p-12 flex flex-col justify-center items-center lg:hidden">
             <ul className="text-center space-y-6 text-lg">
               <li>
-                <a href="#vision" onClick={toggleNavbar}>
+                <Link
+                  to="visi"
+                  smooth={true}
+                  duration={800}
+                  offset={-70}
+                  onClick={toggleNavbar}
+                  className="cursor-pointer"
+                >
                   Vision and Mission
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#features" onClick={toggleNavbar}>
+                <Link
+                  to="Feature"
+                  smooth={true}
+                  duration={800}
+                  offset={-70}
+                  onClick={toggleNavbar}
+                  className="cursor-pointer"
+                >
                   Features
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#roadmap" onClick={toggleNavbar}>
+                <Link
+                  to="roadmap"
+                  smooth={true}
+                  duration={800}
+                  offset={-70}
+                  onClick={toggleNavbar}
+                  className="cursor-pointer"
+                >
                   Roadmap
-                </a>
+                </Link>
               </li>
             </ul>
+
           </div>
         )}
       </div>

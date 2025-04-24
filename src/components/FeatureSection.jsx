@@ -62,7 +62,7 @@ const FeatureSection = () => {
         </h2>
       </motion.div>
 
-      <div className="mt-10 lg:mt-20 px-6">
+      <div id="Feature" className="mt-10 lg:mt-20 px-6">
         <Slider {...settings} className="w-full max-w-[1000px] mx-auto">
           {features.map((feature, index) => (
             <motion.div

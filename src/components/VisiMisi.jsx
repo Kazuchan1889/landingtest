@@ -75,10 +75,10 @@ export default function VisiMisi() {
   }, []);
 
   return (
-    <div id="visi" className="flex flex-col items-center w-full min-h-screen p-4">
+    <div  className="flex flex-col items-center w-full min-h-screen p-4">
       {/* Vision Section */}
       <div className="flex flex-col-reverse lg:flex-row items-center w-full mt-10 gap-6 lg:gap-0">
-        <div className="relative w-[100%] lg:w-1/2 h-[50vh] flex items-center justify-center lg:justify-start">
+        <div  className="relative w-[100%] lg:w-1/2 h-[50vh] flex items-center justify-center lg:justify-start">
           <img
             src={vision}
             alt="Vision"
@@ -86,7 +86,7 @@ export default function VisiMisi() {
           />
 
           {/* Teks di dalam gambar untuk < lg, normal position untuk lg+ */}
-          <div
+          <div id="visi"
             className="
       absolute 
       top-1/2 left-1/2 
@@ -96,7 +96,7 @@ export default function VisiMisi() {
       lg:static lg:text-left lg:px-0 lg:mt-36 lg:translate-x-0 lg:translate-y-0
     "
           >
-            <h3 className="text-xl xl:text-3xl font-bold mb-2 lg:-translate-x-[10%]">
+            <h3  className="text-xl xl:text-3xl font-bold mb-2 lg:-translate-x-[10%]">
               Vision
             </h3>
             <p className="xl:text-lg lg:text-sm lg:w-[40%] w-full text-xs lg:mx-0 lg:-translate-x-[35%]">
