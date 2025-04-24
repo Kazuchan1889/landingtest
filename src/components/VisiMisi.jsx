@@ -75,14 +75,14 @@ export default function VisiMisi() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center w-full min-h-screen p-4">
+    <div id="visi" className="flex flex-col items-center w-full min-h-screen p-4">
       {/* Vision Section */}
       <div className="flex flex-col-reverse lg:flex-row items-center w-full mt-10 gap-6 lg:gap-0">
         <div className="relative w-[100%] lg:w-1/2 h-[50vh] flex items-center justify-center lg:justify-start">
           <img
             src={vision}
             alt="Vision"
-            className="lg:absolute w-full lg:w-full z-0 lg:-translate-x-[50%] lg:mt-40"
+            className="lg:absolute w-[200%] lg:w-[150%] z-0 lg:-translate-x-[50%] lg:mt-40"
           />
 
           {/* Teks di dalam gambar untuk < lg, normal position untuk lg+ */}
@@ -140,9 +140,8 @@ export default function VisiMisi() {
               `}
                   >
                     <p
-                      className={`text-center lg:text-left px-4 lg:w-2/3 lg:text-lg transition-opacity duration-500 ${
-                        center ? "opacity-100" : "opacity-0"
-                      }`}
+                      className={`text-center lg:text-left px-4 lg:w-2/3 lg:text-lg transition-opacity duration-500 ${center ? "opacity-100" : "opacity-0"
+                        }`}
                     >
                       {item.text}
                     </p>
@@ -204,9 +203,8 @@ export default function VisiMisi() {
                   {items.map((_, i) => (
                     <div
                       key={i}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        currentIndex === i ? "bg-white" : "bg-gray-400"
-                      }`}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === i ? "bg-white" : "bg-gray-400"
+                        }`}
                     />
                   ))}
                 </div>
